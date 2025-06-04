@@ -274,7 +274,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext)
   if (context === undefined) {
-    throw new Error("useAuth must be used within an AuthProvider")
+    console.warn("useAuth called outside of AuthProvider")
+    const noop = async () => {}
+    return {
+      user: null,
+      userProfile: null,
+      loading: false,
+      signUp: noop,
+      logIn: noop,
+      logInWithGoogle: noop,
+      logOut: noop,
+      forgotPassword: noop,
+      updateUserProfile: noop,
+    }
   }
   return context
 }
