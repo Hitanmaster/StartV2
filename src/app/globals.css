@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif; /* Updated to --font-inter */
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;       /* Pure Black */
+    --foreground: 225 15% 88%;       /* Off-white (unchanged) */
+
+    --card: 0 0% 7%;           /* Very Dark Gray for cards */
+    --card-foreground: 225 15% 88%; /* Text on card - Off-white (unchanged) */
+
+    --popover: 0 0% 4%;          /* Even Darker Gray for popover background */
+    --popover-foreground: 225 15% 88%; /* Text on popover - Off-white (unchanged) */
+
+    --primary: 210 100% 60%;          /* Neon Blue (unchanged) */
+    --primary-foreground: 220 20% 10%;/* Dark text for on-primary buttons (unchanged) */
+
+    --secondary: 0 0% 15%;         /* Dark gray for secondary button background */
+    --secondary-foreground: 0 0% 80%; /* Light grey/off-white text for secondary buttons */
+
+    --muted: 0 0% 10%;           /* Muted elements background (dark gray) */
+    --muted-foreground: 225 10% 65%;  /* Muted text (lighter gray for contrast) */
+
+    --accent: 330 100% 60%;           /* Neon Pink (unchanged) */
+    --accent-foreground: 220 20% 10%; /* Dark text for on-accent elements (unchanged) */
+
+    --destructive: 0 85% 55%;        /* Neon Red (unchanged) */
+    --destructive-foreground: 0 0% 100%; /* White text on destructive actions (unchanged) */
+
+    --border: 0 0% 15%;           /* Border color, dark subtle gray */
+    --input: 0 0% 12%;            /* Input background, dark gray */
+    --ring: 210 100% 60%;              /* Ring color - Neon Blue (unchanged) */
+
+    --radius: 0.5rem;
+
+    /* Neon colors for gradient (unchanged) */
+    --neon-orange: 28 100% 58%;
+    --neon-pink-gradient: 330 100% 62%;
+    --neon-purple: 270 100% 65%;
+    --neon-blue-gradient: 210 100% 60%;
+
+    /* Chart colors (unchanged) */
+    --chart-1: 210 80% 60%; 
+    --chart-2: 330 80% 60%; 
+    --chart-3: 28 90% 55%;  
+    --chart-4: 270 80% 65%; 
+    --chart-5: 180 75% 55%; 
+
+    /* Sidebar specific colors */
+    --sidebar-background: 0 0% 0%;    /* Pure Black for sidebar */
+    --sidebar-foreground: 225 15% 85%;   /* Sidebar text (unchanged) */
+    --sidebar-primary: var(--primary);       /* Active item text color - Neon Blue (unchanged) */
+    --sidebar-primary-foreground: var(--primary-foreground); /* Active item background color (unchanged) */
+    --sidebar-accent: 0 0% 10%;       /* Hover background (dark gray) */
+    --sidebar-accent-foreground: var(--accent); /* Hover text - Neon Pink (unchanged) */
+    --sidebar-border: 0 0% 8%;       /* Sidebar border (very dark gray) */
+    --sidebar-ring: var(--ring);          /* Neon Blue ring for sidebar focus (unchanged) */
+
+    /* Custom button colors (unchanged for now, but could be adjusted if needed) */
+    --button-start-bg: 225 30% 15%; /* No longer used by the main "Let's Go" button */
+    --button-start-text: 210 20% 95%; /* No longer used by the main "Let's Go" button */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-gradient-brand {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, hsl(var(--neon-orange)), hsl(var(--neon-pink-gradient)), hsl(var(--neon-purple)), hsl(var(--neon-blue-gradient)));
+  }
+
+  .bg-gradient-brand-button {
+    background-image: linear-gradient(to right, hsl(var(--neon-orange)), hsl(var(--neon-pink-gradient)), hsl(var(--neon-purple)), hsl(var(--neon-blue-gradient)));
+  }
+
+  @keyframes subtle-gradient-shift-hero {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .bg-hero-animated {
+    background: linear-gradient(270deg, hsl(var(--background)), hsl(var(--primary) / 0.03), hsl(var(--accent) / 0.03), hsl(var(--background)));
+    background-size: 300% 300%;
+    animation: subtle-gradient-shift-hero 20s ease infinite;
+  }
+}
